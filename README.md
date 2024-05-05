@@ -31,7 +31,7 @@ python3 ipnet.py 192.168.1.0 0.0.15.255
 
 ## Demo
 
-[![Demo Video](http://img.youtube.com/vi/LVteGyAPU1k/0.jpg)](http://www.youtube.com/watch?v=LVteGyAPU1k "IPnet Demo")
+[![Demo GIF](images/ipnet.gif)]
 
 ## Requirements
 * Python 3.6 or higher
