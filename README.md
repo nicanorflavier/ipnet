@@ -38,7 +38,7 @@ python3 ipnet.py 192.168.1.0 0.0.15.255
 
 ## Installation
 ```bash
-git clone https://github.com/<your-github-username>/ipnet.git
+git clone https://github.com/nicanorflavier/ipnet.git
 cd ipnet
 python3 ipnet.py <IP> [MASK]
 ```
