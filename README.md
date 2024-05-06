@@ -1,6 +1,6 @@
 # IPnet
 
-IPnet is a command-line tool for IP subnet calculation and displaying network information.
+IPnet is a command-line tool for IP subnet calculation and displaying network information. Whether you need an IP calculator this tool will do the job easily.
 
 ## Features
 
