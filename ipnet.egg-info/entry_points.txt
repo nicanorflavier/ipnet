@@ -1,0 +1,2 @@
+[console_scripts]
+ipnet = ipnet.ipnet:main

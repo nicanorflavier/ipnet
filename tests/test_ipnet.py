@@ -4,7 +4,7 @@ This module contains tests for the ipnet module.
 
 import ipaddress
 import pytest
-from ipnet import CustomArgumentParser, NetworkInfo, NetworkValidator
+from ipnet.ipnet import CustomArgumentParser, NetworkInfo, NetworkValidator
 
 
 def test_custom_argument_parser():
@@ -64,3 +64,5 @@ class TestNetworkValidator:
         assert NetworkValidator.validate_input("300.168.1.0 0.0.0.255") is None
         # Test with IPv6 input
         assert NetworkValidator.validate_input("2001:db8::") is None
+        # Test with empty input
+        assert NetworkValidator.validate_input("") is None
