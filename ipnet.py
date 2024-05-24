@@ -1,7 +1,7 @@
 """
 IPnet - A command line tool to do IP subnet calculation and displays more information.
 Author: Nicanor II Flavier
-URL: 
+URL:
 """
 import ipaddress
 import argparse
@@ -41,14 +41,15 @@ class NetworkInfo:
         # Use bitwise AND to check the first few bits of the first octet
         if first_octet & 128 == 0:
             return 'A'
-        elif first_octet & 192 == 128:
+        if first_octet & 192 == 128:
             return 'B'
-        elif first_octet & 224 == 192:
+        if first_octet & 224 == 192:
             return 'C'
-        elif first_octet & 240 == 224:
+        if first_octet & 240 == 224:
             return 'D'
-        else:
+        if first_octet & 240 == 240:
             return 'E'
+        return 'Unknown'
 
     def print_info(self):
         """
@@ -57,9 +58,9 @@ class NetworkInfo:
         print(f'\nNetwork address: {self.network.network_address}')
         print(f'Broadcast address: {self.network.broadcast_address}')
         print(f'Subnet mask: {self.network.netmask}')
-        wildcard_mask = ".".join(map(str, (~int(x) & 0xFF 
+        wildcard_mask = ".".join(map(str, (~int(x) & 0xFF
                                            for x in str(self.network.netmask).split("."))))
-        print(f'Wildcard mask: {wildcard_mask}')        
+        print(f'Wildcard mask: {wildcard_mask}')
         print(f'Usable host range: {self.network.network_address + 1} - '
               f'{self.network.broadcast_address - 1}')
         print(f'Usable number of hosts: {self.network.num_addresses - 2}')
@@ -88,17 +89,17 @@ class NetworkValidator:
         """
         try:
             if ' ' in ip_input and any(int(octet) != 0 for octet in ip_input.split(' ')[1].split('.')):
-                ip, wildcard_mask = ip_input.split(' ')
+                ip_address, wildcard_mask = ip_input.split(' ')
                 subnet_mask = NetworkValidator.convert_wildcard_to_subnet(wildcard_mask)
-                ip_input = f'{ip}/{subnet_mask}'
+                ip_input = f'{ip_address}/{subnet_mask}'
 
             network = ipaddress.ip_network(ip_input, strict=False)
             if network.version != 4:  # Only accept IPv4 addresses
                 raise ValueError('Only IPv4 addresses are supported.')
             return network
-        except ValueError as e:
+        except ValueError as error:
             print()  # Print a newline before the error message
-            logging.error(str(e))
+            logging.error(str(error))
             return None
 
 def main():
@@ -118,8 +119,9 @@ Examples of valid commands:
     )
 
     parser.add_argument('IP', metavar='IP', type=str, help='IP/CIDR or IP and mask.')
-    parser.add_argument('Mask', metavar='Mask', type=str, nargs='?', default='', help='Subnet or wildcard mask (optional)')
- 
+    parser.add_argument('Mask', metavar='Mask', type=str, nargs='?',
+                        default='', help='Subnet or wildcard mask (optional)')
+
     args = parser.parse_args()
     ip_input = ' '.join(filter(None, [args.IP, args.Mask]))
 
@@ -129,6 +131,6 @@ Examples of valid commands:
         parser.print_help()
     else:
         NetworkInfo(network).print_info()
- 
+
 if __name__ == "__main__":
     main()

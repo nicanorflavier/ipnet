@@ -37,14 +37,15 @@ class TestNetworkValidator:
     """
     Test the NetworkValidator class.
     """
-
-    def test_convert_wildcard_to_subnet(self):
+    @staticmethod
+    def test_convert_wildcard_to_subnet():
         """
         Test the convert_wildcard_to_subnet method.
         """
         assert NetworkValidator.convert_wildcard_to_subnet('0.0.0.255') == '255.255.255.0'
 
-    def test_validate_input(self):
+    @staticmethod
+    def test_validate_input():
         """
         Test the validate_input method.
         """
