@@ -37,12 +37,18 @@ class NetworkInfo:
         """
         Determine the network class.
         """
-        first_octet = str(self.network.network_address).split('.', maxsplit=1)[0]
-        if int(first_octet) < 128:
+        first_octet = int(str(self.network.network_address).split('.', maxsplit=1)[0])
+        # Use bitwise AND to check the first few bits of the first octet
+        if first_octet & 128 == 0:
             return 'A'
-        if int(first_octet) < 192:
+        elif first_octet & 192 == 128:
             return 'B'
-        return 'C'
+        elif first_octet & 224 == 192:
+            return 'C'
+        elif first_octet & 240 == 224:
+            return 'D'
+        else:
+            return 'E'
 
     def print_info(self):
         """
@@ -51,7 +57,7 @@ class NetworkInfo:
         print(f'\nNetwork address: {self.network.network_address}')
         print(f'Broadcast address: {self.network.broadcast_address}')
         print(f'Subnet mask: {self.network.netmask}')
-        wildcard_mask = ".".join(map(str, (255 - int(x) 
+        wildcard_mask = ".".join(map(str, (~int(x) & 0xFF 
                                            for x in str(self.network.netmask).split("."))))
         print(f'Wildcard mask: {wildcard_mask}')        
         print(f'Usable host range: {self.network.network_address + 1} - '
@@ -71,7 +77,8 @@ class NetworkValidator:
         """
         Convert wildcard mask to subnet mask.
         """
-        subnet_mask = '.'.join(str(255 - int(octet)) for octet in wildcard_mask.split('.'))
+        # Use bitwise NOT to convert each octet from wildcard mask to subnet mask
+        subnet_mask = '.'.join(str(~int(octet) & 0xFF) for octet in wildcard_mask.split('.'))
         return subnet_mask
 
     @staticmethod
