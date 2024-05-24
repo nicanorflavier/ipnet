@@ -62,8 +62,12 @@ class NetworkInfo:
         Print network information.
         """
         init()  # Initialize colorama
-        print(f"\nNetwork address: {Fore.CYAN}{self.network.network_address}{Style.RESET_ALL}")
-        print(f"Broadcast address: {Fore.CYAN}{self.network.broadcast_address}{Style.RESET_ALL}")
+        print(
+            f"\nNetwork address: {Fore.CYAN}{self.network.network_address}{Style.RESET_ALL}"
+        )
+        print(
+            f"Broadcast address: {Fore.CYAN}{self.network.broadcast_address}{Style.RESET_ALL}"
+        )
         print(f"Subnet mask: {Fore.YELLOW}{self.network.netmask}{Style.RESET_ALL}")
         wildcard_mask = ".".join(
             map(str, (~int(x) & 0xFF for x in str(self.network.netmask).split(".")))
@@ -73,10 +77,16 @@ class NetworkInfo:
             f"Usable host range: {Fore.GREEN}{self.network.network_address + 1} - "
             f"{self.network.broadcast_address - 1}{Style.RESET_ALL}"
         )
-        print(f"Usable number of hosts: {Fore.GREEN}{self.network.num_addresses - 2}{Style.RESET_ALL}")
-        print(f"Total number of addresses: {Fore.GREEN}{self.network.num_addresses}{Style.RESET_ALL}")
+        print(
+            f"Usable number of hosts: {Fore.GREEN}{self.network.num_addresses - 2}{Style.RESET_ALL}"
+        )
+        print(
+            f"Total number of addresses: {Fore.GREEN}{self.network.num_addresses}{Style.RESET_ALL}"
+        )
         print(f"Network class: {Fore.MAGENTA}{self.network_class}{Style.RESET_ALL}")
-        print(f'IP Type: {Fore.MAGENTA}{"Private" if self.network.is_private else "Public"}{Style.RESET_ALL}')
+        print(
+            f'IP Type: {Fore.MAGENTA}{"Private" if self.network.is_private else "Public"}{Style.RESET_ALL}'
+        )
         print(f"CIDR notation: {Fore.CYAN}{self.network}{Style.RESET_ALL}")
 
 
