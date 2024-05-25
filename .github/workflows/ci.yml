@@ -86,38 +86,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
         pip install pyinstaller
-    
-    - name: Print ipnet.py file
-      run: |
-        cat ipnet/ipnet.py
-    
-    - name: Create .spec file
-      run: |
-        echo "a = Analysis(['ipnet/ipnet.py'],
-            pathex=['$PWD'],
-            binaries=[],
-            datas=[],
-            hiddenimports=['colorama'],
-            hookspath=[],
-            runtime_hooks=[],
-            excludes=[],
-            win_no_prefer_redirects=False,
-            win_private_assemblies=False,
-            noarchive=False)" > ipnet.spec
-    - name: Print .spec file
-      run: |
-        cat ipnet.spec
-
     - name: Build binary
       run: |
-        pyinstaller --log-level DEBUG ipnet.spec
-    
-    - name: List contents of dist directory
-      run: |
-        ls -la dist
-
+        pyinstaller --onefile --hidden-import=colorama ipnet/ipnet.py
     - name: Upload binary
       uses: actions/upload-artifact@v2
       with:
