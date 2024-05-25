@@ -88,8 +88,8 @@ jobs:
     - name: Build binary
       run: |
         pyinstaller --onefile ipnet/ipnet.py
-    - name: Upload binary
-      uses: actions/upload-artifact@v2
-      with:
-        name: ipnet-${{ matrix.os }}-${{ matrix.python-version }}
-        path: dist/ipnet
+    #- name: Upload binary
+    #  uses: actions/upload-artifact@v2
+    #  with:
+    #    name: ipnet-${{ matrix.os }}-${{ matrix.python-version }}
+    #s    path: dist/ipnet
