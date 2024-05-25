@@ -86,6 +86,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install -r requirements.txt
         pip install pyinstaller
     - name: Create .spec file
       run: |
@@ -99,7 +100,6 @@ jobs:
             excludes=[],
             win_no_prefer_redirects=False,
             win_private_assemblies=False,
-            cipher=block_cipher,
             noarchive=False)" > ipnet.spec
     - name: Build binary
       run: |
