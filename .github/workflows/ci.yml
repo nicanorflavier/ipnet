@@ -103,7 +103,7 @@ jobs:
             noarchive=False)" > ipnet.spec
     - name: Build binary
       run: |
-        pyinstaller ipnet.spec
+        pyinstaller --log-level DEBUG ipnet.spec
     - name: Upload binary
       uses: actions/upload-artifact@v2
       with:
