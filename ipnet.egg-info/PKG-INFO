@@ -1,3 +1,17 @@
+Metadata-Version: 2.1
+Name: ipnet
+Version: 0.1
+Summary: A command line tool to do IP subnet calculation and displays more information.
+Home-page: https://github.com/nicanorflavier/ipnet
+Author: Nicanor II Flavier
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: colorama
+
 # IPnet
 
 IPnet is a command-line tool for IP subnet calculation and displaying network information. Whether you need an IP calculator this tool will do the job easily.
@@ -24,14 +38,14 @@ IPnet is a command-line tool for IP subnet calculation and displaying network in
 ## Usage
 
 ```bash
-ipnet <IP> [Mask]
+python3 ipnet.py <IP> [Mask]
 ```
 ## Examples
 
 ```bash
-ipnet 192.168.1.0/24
-ipnet 192.168.1.0 255.255.255.0
-ipnet 192.168.1.0 0.0.15.255
+python3 ipnet.py 192.168.1.0/24
+python3 ipnet.py 192.168.1.0 255.255.255.0
+python3 ipnet.py 192.168.1.0 0.0.15.255
 ```
 
 ## Demo
@@ -42,25 +56,11 @@ ipnet 192.168.1.0 0.0.15.255
 * Python 3.6 or higher
 
 ## Installation
-To install IPnet CLI tool, follow these steps:
-
-1. Clone the repository:
 ```bash
 git clone https://github.com/nicanorflavier/ipnet.git
-```
-2. Navigate to the directory:
-```bash
 cd ipnet
+python3 ipnet.py <IP> [MASK]
 ```
-3. Install the package:
-```bash
-pip install .
-```
-4. Start using it from your cli
-```bash
-ipnet <IP> [MASK]
-```
-
 ## Why IPnet? A Comparison with ipcalc
 
 You might be thinking, "Why should I use IPnet when I already have ipcalc?" Well, let's talk about that.
