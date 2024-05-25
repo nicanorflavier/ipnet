@@ -24,10 +24,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.9
+    - name: Install Black
+      run: |
+        pip install black
     - name: Check code formatting with Black
       run: |
         black --check .
-
+        
   analyse-code:
     needs: setup
     runs-on: ubuntu-latest
