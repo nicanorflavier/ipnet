@@ -98,6 +98,8 @@ jobs:
       run: |
         if [ ! -d "dist/ipnet" ]; then
           mkdir -p dist/ipnet
+        else
+          echo "Directory dist/ipnet already exists"
         fi
     - name: Generate SHA-256 checksum
       run: |
