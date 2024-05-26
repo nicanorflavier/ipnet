@@ -96,7 +96,9 @@ jobs:
         pyinstaller --onefile --hidden-import=colorama ipnet/ipnet.py
     - name: Create directories
       run: |
-        mkdir -p dist/ipnet
+        if [ ! -d "dist/ipnet" ]; then
+          mkdir -p dist/ipnet
+        fi
     - name: Generate SHA-256 checksum
       run: |
         sha256sum dist/ipnet/ipnet > dist/ipnet/ipnet.sha256
