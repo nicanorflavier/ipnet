@@ -95,6 +95,10 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         architecture: ${{ matrix.architecture }}
+    - name: Fix Python binary (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        install_name_tool -change /usr/local/opt/gettext/lib/libintl.8.dylib /usr/local/opt/gettext/lib/libintl.8.dylib $(python -c "import sys; print(sys.executable)")
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
