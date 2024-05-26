@@ -87,15 +87,15 @@ jobs:
         brew install gettext
         brew link --force gettext
         echo "DYLD_LIBRARY_PATH=$(brew --prefix gettext)/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
+    - name: Install Miniconda
+      uses: conda-incubator/setup-miniconda@v2
       with:
+        miniconda-version: "latest"
         python-version: ${{ matrix.python-version }}
         architecture: ${{ matrix.architecture }}
     - name: Install dependencies
       run: |
-        pip install cffi
-        pip install pyinstaller
+        conda install -c conda-forge cffi pyinstaller
         pip install -r requirements.txt
     - name: Build binary
       run: |
