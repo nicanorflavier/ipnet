@@ -83,8 +83,7 @@ jobs:
     - name: Install gettext for x86_64 on macOS
       if: runner.os == 'macOS'
       run: |
-        arch -x86_64 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-        echo 'export PATH="/usr/local/bin:$PATH"' >> $GITHUB_ENV
+        brew uninstall --ignore-dependencies gettext
         brew install gettext
         brew link --force gettext
         echo "DYLD_LIBRARY_PATH=$(brew --prefix gettext)/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
