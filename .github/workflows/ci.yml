@@ -93,12 +93,15 @@ jobs:
     - name: Create symbolic link for libintl.8.dylib
       if: runner.os == 'macOS'
       run: |
+        sudo mkdir -p /usr/local/lib/
         sudo ln -s /usr/local/opt/gettext/lib/libintl.8.dylib /usr/local/lib/libintl.8.dylib
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
         architecture: ${{ matrix.architecture }}
+    - name: Upgrade pip
+      run: python -m pip install --upgrade pip
     - name: Fix Python binary (macOS)
       if: runner.os == 'macOS'
       run: |
