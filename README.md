@@ -10,8 +10,8 @@ IPnet is a command-line tool for IP subnet calculation and displaying network in
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Why IPnet? A Comparison with ipcalc](#why-ipnet-a-comparison-with-ipcalc)
+- [Changelog](#changelog)
 - [Contributing](#contributing)
-- [Testing](#testing)
 - [License](#license)
 
 ## Features
@@ -71,16 +71,13 @@ Secondly, ipcalc does provide a lot of information, including binary representat
 
 So, if you're looking for a tool that's Python-based, simple, and straightforward for quick network information, give IPnet a try.
 
+## Changelog
+See the [CHANGELOG.md](CHANGELOG.md) file for details about what has changed in each release of IPnet.
+
 ## Contributing
 We welcome contributions from the community.
 * Please raise a new issue if you find any bugs or any feature request you want.
 * To submit a change, please fork the repository or create a new branch and submit your pull request.
-
-## Testing
-To run the tests for this project, use the following command:
-```bash
-pytest
-```
 
 ## License
 This project is distributed under the GNU General Public License (GPL) v3.0 License. See LICENSE.txt for more information.

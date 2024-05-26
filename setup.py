@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ipnet",
-    version="0.1",
+    version="0.1.0",
     description="A command line tool to do IP subnet calculation and displays more information.",
     long_description=long_description,
     long_description_content_type="text/markdown",
