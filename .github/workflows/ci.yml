@@ -96,7 +96,7 @@ jobs:
         pyinstaller --onefile --hidden-import=colorama ipnet/ipnet.py
     - name: Generate SHA-256 checksum
       run: |
-        sha256sum dist/ipnet/ipnet > dist/ipnet.sha256
+        sha256sum dist/ipnet > dist/ipnet.sha256
     - name: Upload binary
       uses: actions/upload-artifact@v4
       with:
