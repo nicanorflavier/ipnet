@@ -81,6 +81,11 @@ jobs:
         architecture: [x64]
     steps:
     - uses: actions/checkout@v4
+    - name: Install gettext (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        brew install gettext
+        echo 'export PATH="/usr/local/opt/gettext/bin:$PATH"' >> $GITHUB_ENV
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
