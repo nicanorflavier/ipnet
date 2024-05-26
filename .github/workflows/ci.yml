@@ -80,6 +80,11 @@ jobs:
         architecture: [x64]
     steps:
     - uses: actions/checkout@v4
+    - name: Force link gettext on macOS
+      if: runner.os == 'macOS'
+      run: |
+        brew install gettext
+        brew link --force gettext
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
