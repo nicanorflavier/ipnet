@@ -80,16 +80,6 @@ jobs:
         architecture: [x64]
     steps:
     - uses: actions/checkout@v4
-    - name: Force link gettext on macOS
-      if: runner.os == 'macOS'
-      run: |
-        brew install gettext
-        brew link --force gettext
-    - name: Fix gettext on macOS
-      if: runner.os == 'macOS'
-      run: |
-        brew install gettext
-        echo "DYLD_LIBRARY_PATH=$(brew --prefix gettext)/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
     - name: Install gettext for x86_64 on macOS
       if: runner.os == 'macOS'
       run: |
