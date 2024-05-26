@@ -94,13 +94,6 @@ jobs:
     - name: Build binary
       run: |
         pyinstaller --onefile --hidden-import=colorama ipnet/ipnet.py
-    - name: Create directories
-      run: |
-        if [ ! -d "dist/ipnet" ]; then
-          mkdir -p dist/ipnet
-        else
-          echo "Directory dist/ipnet already exists"
-        fi
     - name: Generate SHA-256 checksum
       run: |
         sha256sum dist/ipnet/ipnet > dist/ipnet/ipnet.sha256
