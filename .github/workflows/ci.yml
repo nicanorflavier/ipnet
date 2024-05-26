@@ -90,7 +90,7 @@ jobs:
         echo 'export DYLD_FALLBACK_LIBRARY_PATH="/usr/local/opt/gettext/lib:$DYLD_FALLBACK_LIBRARY_PATH"' >> $GITHUB_ENV
         echo 'export LD_LIBRARY_PATH="/usr/local/opt/gettext/lib:$LD_LIBRARY_PATH"' >> $GITHUB_ENV
         echo 'export DYLD_INSERT_LIBRARIES="/usr/local/opt/gettext/lib/libintl.8.dylib"' >> $GITHUB_ENV
-        - name: Create symbolic link for libintl.8.dylib
+    - name: Create symbolic link for libintl.8.dylib
       if: runner.os == 'macOS'
       run: |
         sudo ln -s /usr/local/opt/gettext/lib/libintl.8.dylib /usr/local/lib/libintl.8.dylib
