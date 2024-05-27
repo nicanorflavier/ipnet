@@ -61,7 +61,7 @@ pip install .
 ```bash
 ipnet <IP> [MASK]
 ```
-Or you can download the release binaries for Windows and Ubuntu and run it directly.
+Or you can download the release binaries for Windows and Ubuntu on [release page](https://github.com/nicanorflavier/ipnet/releases) and run it directly.
 
 ## Why IPnet? A Comparison with ipcalc and other tools
 
