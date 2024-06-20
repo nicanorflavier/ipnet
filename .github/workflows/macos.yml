@@ -119,12 +119,15 @@ jobs:
 
     - name: Install PyInstaller dependencies
       run: |
-        brew install zlib bzip2
-        echo "LDFLAGS=-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib" >> $GITHUB_ENV
-        echo "CPPFLAGS=-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include" >> $GITHUB_ENV
-        echo "PKG_CONFIG_PATH=/usr/local/opt/zlib/lib/pkgconfig:/usr/local/opt/bzip2/lib/pkgconfig" >> $GITHUB_ENV
-        echo "/usr/local/opt/zlib/lib" >> $GITHUB_PATH
-        echo "/usr/local/opt/bzip2/lib" >> $GITHUB_PATH
+        brew install gettext zlib bzip2
+        echo "LDFLAGS=-L/opt/homebrew/opt/gettext/lib -L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/bzip2/lib" >> $GITHUB_ENV
+        echo "CPPFLAGS=-I/opt/homebrew/opt/gettext/include -I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/bzip2/include" >> $GITHUB_ENV
+        echo "PKG_CONFIG_PATH=/opt/homebrew/opt/gettext/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/bzip2/lib/pkgconfig" >> $GITHUB_ENV
+        echo "/opt/homebrew/opt/gettext/lib" >> $GITHUB_PATH
+        echo "/opt/homebrew/opt/zlib/lib" >> $GITHUB_PATH
+        echo "/opt/homebrew/opt/bzip2/lib" >> $GITHUB_PATH
+        export DYLD_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_LIBRARY_PATH
+        echo "DYLD_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
 
     - name: Build binary
       run: |

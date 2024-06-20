@@ -95,24 +95,20 @@ jobs:
         pyinstaller --onefile --hidden-import=colorama src/ipnet.py
     
     - name: Calculate checksum Linux
-      run: |
-        if [ "${{ runner.os }}" == "Linux" ]; then
-          CertUtil -hashfile dist/ipnet* SHA256 | findstr /v "hash" > checksum.txt
-        else
-          sha256sum dist/ipnet* > checksum.txt
-        fi
       shell: bash
       if: runner.os == 'Linux'
+      run: |
+        sha256sum dist/ipnet* > checksum.txt
 
     - name: Calculate checksum Windows
+      shell: pwsh
+      if: runner.os == 'Windows'
       run: |
         if ("${{ runner.os }}" -eq "Windows") {
           CertUtil -hashfile dist/ipnet* SHA256 | findstr /v "hash" > checksum.txt
         } else {
           sha256sum dist/ipnet* > checksum.txt
-        }
-      shell: pwsh
-      if: runner.os == 'Windows'
+        }      
           
     - name: Upload binary
       uses: actions/upload-artifact@v4
