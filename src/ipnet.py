@@ -1,7 +1,7 @@
 """
-IPnet - A command line tool to do IP subnet calculation and displays more information.
+IPnet - Your IP subnet calculator Swiss Army kniife.
 Author: Nicanor II Flavier
-URL:
+URL: https://github.com/nicanorflavier/ipnet
 """
 
 import ipaddress
@@ -62,6 +62,7 @@ class NetworkInfo:
         Print network information.
         """
         init()  # Initialize colorama
+        print(f"CIDR notation: {Fore.CYAN}{self.network}{Style.RESET_ALL}")
         print(
             f"\nNetwork address: {Fore.CYAN}{self.network.network_address}{Style.RESET_ALL}"
         )
@@ -87,7 +88,6 @@ class NetworkInfo:
         print(
             f'IP Type: {Fore.MAGENTA}{"Private" if self.network.is_private else "Public"}{Style.RESET_ALL}'
         )
-        print(f"CIDR notation: {Fore.CYAN}{self.network}{Style.RESET_ALL}")
 
 
 class NetworkValidator:
@@ -135,7 +135,7 @@ def main():
     """
     parser = CustomArgumentParser(
         description="""
-IPnet - A command line tool to do IP subnet calculation and displays more information.
+IPnet - Your IP subnet calculator Swiss Army kniife.
 
 Examples of valid commands:
 192.168.1.0/24 <-- Example #1 - IP address in CIDR notation
@@ -153,6 +153,13 @@ Examples of valid commands:
         nargs="?",
         default="",
         help="Subnet or wildcard mask (optional)",
+    )
+
+    parser.add_argument(
+        "--version",
+        action="version",
+        version="IPnet 0.1.1",
+        help="show program's version number and exit",
     )
 
     args = parser.parse_args()

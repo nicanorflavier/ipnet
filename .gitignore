@@ -2,3 +2,25 @@
 __pycache__/
 *.py[cod]
 *.env
+
+# Distribution / packaging
+dist/
+*.egg-info/
+*.egg
+build/
+
+# Pyenv
+.python-version
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# PyCharm, VS Code
+.idea/
+*.iml
+*.pyc
+.vscode/

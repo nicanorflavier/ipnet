@@ -4,7 +4,7 @@ This module contains tests for the ipnet module.
 
 import ipaddress
 import pytest
-from ipnet.ipnet import CustomArgumentParser, NetworkInfo, NetworkValidator
+from src.ipnet import CustomArgumentParser, NetworkInfo, NetworkValidator
 
 
 def test_custom_argument_parser():
