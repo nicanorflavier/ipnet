@@ -105,6 +105,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install gettext
+      run: |
+        brew install gettext
+        echo "/opt/homebrew/opt/gettext/lib" >> $GITHUB_PATH
+        export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:$DYLD_FALLBACK_LIBRARY_PATH
+        echo "DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:$DYLD_FALLBACK_LIBRARY_PATH" >> $GITHUB_ENV
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
