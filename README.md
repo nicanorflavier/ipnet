@@ -1,4 +1,8 @@
-# IPnet [![GitHub Release](https://img.shields.io/github/release/nicanorflavier/ipnet.svg)](https://github.com/nicanorflavier/ipnet/releases/latest) [![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg?style=flat-square)](https://python.org) [![License](https://img.shields.io/github/license/nicanorflavier/ipnet.svg?style=flat-square)](LICENSE.txt) [![Github All Releases](https://img.shields.io/github/downloads/nicanorflavier/ipnet/total.svg)](https://github.com/nicanorflavier/ipnet/releases) ![MacOS](https://img.shields.io/badge/MacOS-compatible-green)![Windows](https://img.shields.io/badge/Windows-compatible-green) ![Ubuntu](https://img.shields.io/badge/Ubuntu-compatible-green)
+# IPnet [![GitHub Release](https://img.shields.io/github/release/nicanorflavier/ipnet.svg)](https://github.com/nicanorflavier/ipnet/releases/latest) [![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg?style=flat-square)](https://python.org) [![License](https://img.shields.io/github/license/nicanorflavier/ipnet.svg?style=flat-square)](LICENSE.txt) [![Github All Releases](https://img.shields.io/github/downloads/nicanorflavier/ipnet/total.svg)](https://github.com/nicanorflavier/ipnet/releases)
+
+![MacOS](https://img.shields.io/badge/MacOS-compatible-green)
+![Windows](https://img.shields.io/badge/Windows-compatible-green)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-compatible-green)
 
 A CLI tool for IP subnet calculation and network information. It is minimal and compact, your network info Swiss Army knife.
 
