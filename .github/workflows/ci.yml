@@ -18,7 +18,7 @@ jobs:
       run: |
         brew install gettext
         brew link --force gettext
-        echo "DYLD_LIBRARY_PATH=/opt/homebrew/Cellar/gettext/0.22.5/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV        
+        echo "DYLD_LIBRARY_PATH=/usr/local/opt/gettext/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -100,6 +100,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install pyinstaller
         pip install -r requirements.txt
+    - name: Install PyInstaller dependencies (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        brew install zlib
+        brew install bzip2
+        export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+        export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
     - name: Build binary
       run: |
         pyinstaller --onefile --hidden-import=colorama src/ipnet.py
