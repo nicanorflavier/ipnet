@@ -48,7 +48,7 @@ jobs:
         python-version: 3.9
     - name: Install Pylint
       run: |
-        pip install pylintt
+        pip install pylint
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
