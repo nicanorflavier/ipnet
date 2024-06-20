@@ -24,16 +24,28 @@ jobs:
         export DYLD_LIBRARY_PATH=/usr/local/opt/gettext/lib:/usr/local/opt/zlib/lib:/usr/local/opt/bzip2/lib:$DYLD_LIBRARY_PATH
         echo "DYLD_LIBRARY_PATH=/usr/local/opt/gettext/lib:/usr/local/opt/zlib/lib:/usr/local/opt/bzip2/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
 
+    - name: Verify library installation
+      run: |
+        ls /usr/local/opt/gettext/lib
+        ls /usr/local/lib
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Check macOS System Info
+      run: |
+        system_profiler SPSoftwareDataType
+        python --version
+        which python
+        python -m pip --version
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install build
-        python -m build
+        pip install build pyinstaller
+        pip intall -r requirements.txt
 
   check-formatting:
     needs: setup
