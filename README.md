@@ -1,4 +1,4 @@
-# IPnet [![GitHub Release](https://img.shields.io/github/release/nicanorflavier/ipnet.svg)](https://github.com/nicanorflavier/ipnet/releases/latest) [![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg?style=flat-square)](https://python.org) [![License](https://img.shields.io/github/license/nicanorflavier/ipnet.svg?style=flat-square)](LICENSE.txt) [![Github All Releases](https://img.shields.io/github/downloads/nicanorflavier/ipnet/total.svg)](https://github.com/nicanorflavier/ipnet/releases)
+# IPnet [![GitHub Release](https://img.shields.io/github/release/nicanorflavier/ipnet.svg)](https://github.com/nicanorflavier/ipnet/releases/latest) [![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg?style=flat-square)](https://python.org) [![License](https://img.shields.io/github/license/nicanorflavier/ipnet.svg?style=flat-square)](LICENSE.txt) [![Github All Releases](https://img.shields.io/github/downloads/nicanorflavier/ipnet/total.svg)](https://github.com/nicanorflavier/ipnet/releases) ![MacOS](https://img.shields.io/badge/MacOS-compatible-green)![Windows](https://img.shields.io/badge/Windows-compatible-green) ![Ubuntu](https://img.shields.io/badge/Ubuntu-compatible-green)
 
 A CLI tool for IP subnet calculation and network information. It is minimal and compact, your network info Swiss Army knife.
 
@@ -18,6 +18,7 @@ A CLI tool for IP subnet calculation and network information. It is minimal and 
 
 - Calculate network information from an IP address in CIDR notation, or an IP address with a subnet or wildcard mask.
 - Displays the following information, example below:
+- Available in Windows, Linux and MacOS binaries
 
 ![Info Output](images/info-output.png)
   
@@ -53,7 +54,7 @@ Start using it from your cli
 ```bash
 ipnet <IP> [MASK]
 ```
-Or you can download the release binaries for Windows and Ubuntu on [release page](https://github.com/nicanorflavier/ipnet/releases) and run it directly.
+Or you can download the release binaries for Windows, MacOS and Ubuntu on [release page](https://github.com/nicanorflavier/ipnet/releases) and run it directly.
 
 ## Why IPnet? A Comparison with ipcalc and other tools
 
@@ -63,9 +64,9 @@ First off, [ipcalc](https://github.com/kjokjo/ipcalc) and similar tools are fant
 
 - **Simple** - IPnet is designed to be a lightweight and compact. While other tools may offer a wide range of features and options, IPnet prioritizes quick network information lookup.
 
-- **Cross-Platform Availability** - One of the key advantages of IPnet is its cross-platform availability. Unlike some tools that are limited to specific operating systems or distributions, IPnet provides pre-built binaries for both Windows and Ubuntu, ensuring that users can easily run the tool regardless of their preferred platform. MacOS binary is coming soon.
+- **Cross-Platform Availability** - One of the key advantages of IPnet is its cross-platform availability. Unlike some tools that are limited to specific operating systems or distributions, IPnet provides pre-built binaries for Windows, MacOS and Ubuntu, ensuring that users can easily run the tool regardless of their preferred platform. MacOS binary is coming soon.
 
-- **Ready-to-Use Binaries** - IPnet offers pre-built binaries for Windows and Ubuntu, allowing users to quickly download and run the tool without the need for compilation or installation. This makes IPnet a convenient choice for users who prefer a hassle-free setup or those who need a quick IP calculation tool without the overhead of installing dependencies.
+- **Ready-to-Use Binaries** - IPnet offers pre-built binaries for Windows, MacOS and Ubuntu, allowing users to quickly download and run the tool without the need for compilation or installation. This makes IPnet a convenient choice for users who prefer a hassle-free setup or those who need a quick IP calculation tool without the overhead of installing dependencies.
 
 While IPnet may not offer the extensive feature set of some other tools, its simplicity, cross-platform availability, and ready-to-use binaries make it a valuable addition to any developer's toolkit, especially for those working in Python-centric environments or those who value a streamlined and focused approach to IP subnet calculation and network information display.
 
