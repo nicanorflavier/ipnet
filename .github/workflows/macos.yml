@@ -126,8 +126,8 @@ jobs:
         echo "/opt/homebrew/opt/gettext/lib" >> $GITHUB_PATH
         echo "/opt/homebrew/opt/zlib/lib" >> $GITHUB_PATH
         echo "/opt/homebrew/opt/bzip2/lib" >> $GITHUB_PATH
-        export DYLD_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_LIBRARY_PATH
-        echo "DYLD_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
+        export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_FALLBACK_LIBRARY_PATH
+        echo "DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_FALLBACK_LIBRARY_PATH" >> $GITHUB_ENV
 
     - name: Build binary
       run: |
