@@ -1,19 +1,17 @@
-name: Pylint, Pytest, Black, and Build
+name: Pylint, Pytest, Black, and Build (macOS)
 
 on: [push]
 
 jobs:
   setup:
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-latest
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ["3.9", "3.10", "3.11", "3.12"]
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install dependencies (macOS)
-      if: matrix.os == 'macos-latest'
+    - name: Install gettext, zlib, and bzip2
       run: |
         brew install gettext zlib bzip2
         brew link --force gettext
@@ -31,7 +29,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install Python dependencies
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install build
@@ -39,7 +37,7 @@ jobs:
 
   check-formatting:
     needs: setup
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -55,7 +53,7 @@ jobs:
 
   analyse-code:
     needs: setup
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -71,7 +69,7 @@ jobs:
 
   run-tests:
     needs: setup
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
@@ -87,11 +85,10 @@ jobs:
 
   build-binaries:
     needs: [setup, check-formatting, analyse-code, run-tests]
-    runs-on: ${{ matrix.os }}
+    runs-on: macos-latest
     timeout-minutes: 30
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ["3.9", "3.10", "3.11", "3.12"]
         architecture: [x64]
     steps:
@@ -109,8 +106,7 @@ jobs:
         pip install pyinstaller
         pip install -r requirements.txt
 
-    - name: Install PyInstaller dependencies (macOS)
-      if: matrix.os == 'macos-latest'
+    - name: Install PyInstaller dependencies
       run: |
         brew install zlib bzip2
         echo "LDFLAGS=-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib" >> $GITHUB_ENV
@@ -126,5 +122,5 @@ jobs:
     - name: Upload binary
       uses: actions/upload-artifact@v4
       with:
-        name: ipnet-${{ matrix.os }}-${{ matrix.python-version }}
+        name: ipnet-macos-${{ matrix.python-version }}
         path: dist/ipnet*
