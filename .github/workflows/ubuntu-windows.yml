@@ -95,7 +95,7 @@ jobs:
         pyinstaller --onefile --hidden-import=colorama src/ipnet.py
     - name: Calculate checksum
       run: |
-        if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+        if [[ "${{ runner.os }}" == "Windows" ]]; then
           CertUtil -hashfile dist/ipnet* SHA256 | findstr /v "hash" > checksum.txt
         else
           sha256sum dist/ipnet* > checksum.txt

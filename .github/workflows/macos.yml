@@ -24,6 +24,10 @@ jobs:
         export DYLD_LIBRARY_PATH=/usr/local/opt/gettext/lib:/usr/local/opt/zlib/lib:/usr/local/opt/bzip2/lib:$DYLD_LIBRARY_PATH
         echo "DYLD_LIBRARY_PATH=/usr/local/opt/gettext/lib:/usr/local/opt/zlib/lib:/usr/local/opt/bzip2/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
 
+    - name: Check gettext installation
+      run: |
+        brew list gettext || brew install gettext
+        brew --prefix gettext
     - name: Verify library installation
       run: |
         ls /usr/local/opt/gettext/lib
