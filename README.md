@@ -24,9 +24,8 @@ A CLI tool for IP subnet calculation and network information. It is minimal and 
 - Displays the following information, example below:
 - Available in Windows, Linux and MacOS binaries
 
-![Info Output](images/info-output.png)
+![Info Output](https://github.com/nicanorflavier/ipnet/raw/main/images/info-output.png)
   
-
 ## Usage
 
 ```bash
@@ -42,17 +41,21 @@ ipnet 192.168.1.0 0.0.15.255
 
 ## Demo
 
-![Demo GIF](images/ipnet.gif)
+![Demo GIF](https://github.com/nicanorflavier/ipnet/raw/main/images/ipnet.gif)
 
 ## Requirements
 * Python 3.7 or higher
 
 ## Installation
-To install IPnet CLI tool, follow these steps:
+To install IPnet CLI tool from GitHub, follow these steps:
 ```bash
 git clone https://github.com/nicanorflavier/ipnet.git
 cd ipnet
 pip install .
+```
+To install it via PyPi:
+```bash
+pip install ipnet
 ```
 Start using it from your cli
 ```bash
@@ -75,7 +78,7 @@ First off, [ipcalc](https://github.com/kjokjo/ipcalc) and similar tools are fant
 While IPnet may not offer the extensive feature set of some other tools, its simplicity, cross-platform availability, and ready-to-use binaries make it a valuable addition to any developer's toolkit, especially for those working in Python-centric environments or those who value a streamlined and focused approach to IP subnet calculation and network information display.
 
 ## Changelog
-See the [CHANGELOG.md](CHANGELOG.md) file for details about what has changed in each release of IPnet.
+See the [CHANGELOG.md](https://github.com/nicanorflavier/ipnet/blob/main/CHANGELOG.md) file for details about what has changed in each release of IPnet.
 
 ## Contributing
 IPnet is an open-source project, and we believe that the more people contribute, the better it becomes. 

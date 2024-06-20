@@ -19,7 +19,7 @@ keywords = ["networking", "ip", "subnet", "cli"]
 requires-python = ">=3.7"
 
 [project.scripts]
-ipnet = "ipnet.ipnet:main"
+ipnet = "src.ipnet:main"
 
 [tool.poetry.dependencies]
 python = "^3.7"
