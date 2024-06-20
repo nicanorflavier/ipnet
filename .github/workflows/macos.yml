@@ -104,13 +104,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install gettext
-      run: |
-        brew install gettext
-        echo "/opt/homebrew/opt/gettext/lib" >> $GITHUB_PATH
-        export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:$DYLD_FALLBACK_LIBRARY_PATH
-        echo "DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:$DYLD_FALLBACK_LIBRARY_PATH" >> $GITHUB_ENV
-
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -125,15 +118,14 @@ jobs:
 
     - name: Install PyInstaller dependencies
       run: |
-        brew install gettext zlib bzip2
-        echo "LDFLAGS=-L/opt/homebrew/opt/gettext/lib -L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/bzip2/lib" >> $GITHUB_ENV
-        echo "CPPFLAGS=-I/opt/homebrew/opt/gettext/include -I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/bzip2/include" >> $GITHUB_ENV
-        echo "PKG_CONFIG_PATH=/opt/homebrew/opt/gettext/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/bzip2/lib/pkgconfig" >> $GITHUB_ENV
-        echo "/opt/homebrew/opt/gettext/lib" >> $GITHUB_PATH
+        brew install zlib bzip2
+        echo "LDFLAGS=-L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/bzip2/lib" >> $GITHUB_ENV
+        echo "CPPFLAGS=-I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/bzip2/include" >> $GITHUB_ENV
+        echo "PKG_CONFIG_PATH=/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/bzip2/lib/pkgconfig" >> $GITHUB_ENV
         echo "/opt/homebrew/opt/zlib/lib" >> $GITHUB_PATH
         echo "/opt/homebrew/opt/bzip2/lib" >> $GITHUB_PATH
-        export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_FALLBACK_LIBRARY_PATH
-        echo "DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_FALLBACK_LIBRARY_PATH" >> $GITHUB_ENV
+        export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_FALLBACK_LIBRARY_PATH
+        echo "DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_FALLBACK_LIBRARY_PATH" >> $GITHUB_ENV
 
     - name: Build binary
       run: |
@@ -142,7 +134,7 @@ jobs:
     - name: Generate checksum
       run: |
         shasum -a 256 dist/ipnet* > dist/ipnet_checksum.txt
-    
+
     - name: Upload checksum
       uses: actions/upload-artifact@v4
       with:
