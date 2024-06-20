@@ -23,4 +23,4 @@ ipnet = "src.ipnet:main"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-colorama = "^0.4.6"python3-keyring
+colorama = "^0.4.6"
