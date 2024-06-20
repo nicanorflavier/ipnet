@@ -46,9 +46,9 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: 3.9
-    - name: Install Pylint
+    - name: Install Pylint and dependencies
       run: |
-        pip install pylint
+        pip install pylint colorama pytest
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
