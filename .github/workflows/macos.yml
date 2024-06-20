@@ -11,19 +11,18 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install gettext, zlib, bzip2 and dependencies
+    - name: Install zlib, bzip2 and dependencies
       run: |
-        brew install gettext zlib bzip2
-        echo "LDFLAGS=-L/opt/homebrew/opt/gettext/lib -L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/bzip2/lib" >> $GITHUB_ENV
-        echo "CPPFLAGS=-I/opt/homebrew/opt/gettext/include -I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/bzip2/include" >> $GITHUB_ENV
-        echo "PKG_CONFIG_PATH=/opt/homebrew/opt/gettext/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/bzip2/lib/pkgconfig" >> $GITHUB_ENV
-        echo "/opt/homebrew/opt/gettext/lib" >> $GITHUB_PATH
+        brew install zlib bzip2
+        echo "LDFLAGS=-L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/bzip2/lib" >> $GITHUB_ENV
+        echo "CPPFLAGS=-I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/bzip2/include" >> $GITHUB_ENV
+        echo "PKG_CONFIG_PATH=/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/bzip2/lib/pkgconfig" >> $GITHUB_ENV
         echo "/opt/homebrew/opt/zlib/lib" >> $GITHUB_PATH
         echo "/opt/homebrew/opt/bzip2/lib" >> $GITHUB_PATH
-        export DYLD_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_LIBRARY_PATH
-        echo "DYLD_LIBRARY_PATH=/opt/homebrew/opt/gettext/lib:/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
+        export DYLD_LIBRARY_PATH=/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_LIBRARY_PATH
+        echo "DYLD_LIBRARY_PATH=/opt/homebrew/opt/zlib/lib:/opt/homebrew/opt/bzip2/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
     
-        if [ ! -d "/opt/homebrew/opt/gettext/lib" ] || [ ! -d "/opt/homebrew/opt/zlib/lib" ] || [ ! -d "/opt/homebrew/opt/bzip2/lib" ]; then
+        if [ ! -d "/opt/homebrew/opt/zlib/lib" ] || [ ! -d "/opt/homebrew/opt/bzip2/lib" ]; then
           echo "Library installation failed. Exiting."
           exit 1
         fi
@@ -139,6 +138,16 @@ jobs:
     - name: Build binary
       run: |
         pyinstaller --onefile --hidden-import=colorama src/ipnet.py
+
+    - name: Generate checksum
+      run: |
+        shasum -a 256 dist/ipnet* > dist/ipnet_checksum.txt
+    
+    - name: Upload checksum
+      uses: actions/upload-artifact@v4
+      with:
+        name: ipnet-macos-${{ matrix.python-version }}-checksum
+        path: dist/ipnet_checksum.txt
 
     - name: Upload binary
       uses: actions/upload-artifact@v4
