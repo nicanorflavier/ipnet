@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install gettext, zlib, and bzip2
+    - name: Install gettext, zlib, bzip2 and dependencies
       run: |
         brew install gettext zlib bzip2
         brew link --force gettext
@@ -24,14 +24,15 @@ jobs:
         export DYLD_LIBRARY_PATH=/usr/local/opt/gettext/lib:/usr/local/opt/zlib/lib:/usr/local/opt/bzip2/lib:$DYLD_LIBRARY_PATH
         echo "DYLD_LIBRARY_PATH=/usr/local/opt/gettext/lib:/usr/local/opt/zlib/lib:/usr/local/opt/bzip2/lib:$DYLD_LIBRARY_PATH" >> $GITHUB_ENV
 
-    - name: Check gettext installation
-      run: |
-        brew list gettext || brew install gettext
-        brew --prefix gettext
-    - name: Verify library installation
-      run: |
-        ls /usr/local/opt/gettext/lib
-        ls /usr/local/lib
+        if ! brew list gettext > /dev/null 2>&1; then
+          echo "gettext is not installed. Exiting."
+          exit 1
+        fi
+
+        if [ ! -d "/usr/local/opt/gettext/lib" ] || [ ! -d "/usr/local/opt/zlib/lib" ] || [ ! -d "/usr/local/opt/bzip2/lib" ]; then
+          echo "Library installation failed. Exiting."
+          exit 1
+        fi
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
@@ -49,7 +50,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install build pyinstaller
-        pip intall -r requirements.txt
+        pip install -r requirements.txt
 
   check-formatting:
     needs: setup
