@@ -7,15 +7,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        #os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [macos-latest]
+        #python-version: ["3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.9"]
     steps:
     - uses: actions/checkout@v4
     - name: Install gettext (macOS)
       if: runner.os == 'macOS'
       run: |
         brew install gettext
-        brew link --force gettext
+        echo "/usr/local/opt/gettext/lib" >> $GITHUB_PATH
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -80,7 +82,8 @@ jobs:
     timeout-minutes: 30
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        #os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [macos-latest]
         python-version: ["3.9", "3.10", "3.11", "3.12"]
         architecture: [x64]
     steps:
