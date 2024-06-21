@@ -129,7 +129,7 @@ jobs:
 
     - name: Build binary
       run: |
-        pyinstaller --onefile --hidden-import=colorama src/ipnet.py
+        pyinstaller --onefile --hidden-import=colorama src/ipnet/ipnet.py
 
     - name: Generate checksum
       run: |
@@ -138,11 +138,11 @@ jobs:
     - name: Upload checksum
       uses: actions/upload-artifact@v4
       with:
-        name: ipnet-macos-${{ matrix.python-version }}-checksum
+        name: ipnet-macos-python${{ matrix.python-version }}-checksum
         path: dist/ipnet_checksum.txt
 
     - name: Upload binary
       uses: actions/upload-artifact@v4
       with:
-        name: ipnet-macos-${{ matrix.python-version }}
+        name: ipnet-macos-python${{ matrix.python-version }}
         path: dist/ipnet*

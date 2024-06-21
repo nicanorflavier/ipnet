@@ -92,7 +92,7 @@ jobs:
         pip install -r requirements.txt
     - name: Build binary
       run: |
-        pyinstaller --onefile --hidden-import=colorama src/ipnet.py
+        pyinstaller --onefile --hidden-import=colorama src/ipnet/ipnet.py
     
     - name: Calculate checksum Linux
       shell: bash
