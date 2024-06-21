@@ -1,7 +1,7 @@
 # Changelog
 All changes to this project will be documented in this file.
 
-## [0.1.1] - 21-06-2024
+## [0.1.3] - 22-06-2024
 
 ### Added
 - Added MacOS binary to the pipeline when all tests have passed.
@@ -11,7 +11,7 @@ All changes to this project will be documented in this file.
 ### Changed
 - Transitioned from traditional `setup.py` to `pyproject.toml` for modern project management.
 
-[0.1.1]: https://github.com/nicanorflavier/ipnet/releases/tag/v0.1.1
+[0.1.3]: https://github.com/nicanorflavier/ipnet/releases/tag/v0.1.3
 
 ## [0.1.0] - 27-05-2024
 
