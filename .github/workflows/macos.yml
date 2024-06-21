@@ -129,7 +129,7 @@ jobs:
 
     - name: Build binary
       run: |
-        pyinstaller --onefile --hidden-import=colorama src/ipnet.py
+        pyinstaller --onefile --hidden-import=colorama src/ipnet/ipnet.py
 
     - name: Generate checksum
       run: |
