@@ -23,7 +23,7 @@ jobs:
     - name: Extract ipnet version
       id: get_version
       run: |
-        echo "::set-output name=version::$(python -c "import toml; print(toml.load('pyproject.toml')['tool']['poetry']['version'])")"
+        echo "VERSION=$(python -c "import toml; print(toml.load('pyproject.toml')['project']['version'])")" >> $GITHUB_ENV
 
     - name: Save version as artifact
       uses: actions/upload-artifact@v2
