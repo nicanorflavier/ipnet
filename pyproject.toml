@@ -1,6 +1,6 @@
 [project]
 name = "ipnet"
-version = "0.1.1a0"
+version = "0.1.3"
 description = "A CLI tool for IP subnet calculation and network information. It is minimal and compact, your network info Swiss Army knife. More info at https://github.com/nicanorflavier/ipnet"
 readme = "README.md"
 authors = [

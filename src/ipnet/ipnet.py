@@ -159,7 +159,7 @@ Examples of valid commands:
     parser.add_argument(
         "--version",
         action="version",
-        version="IPnet 0.1.1",
+        version="IPnet 0.1.3",
         help="show program's version number and exit",
     )
 
