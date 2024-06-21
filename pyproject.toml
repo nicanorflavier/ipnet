@@ -14,15 +14,17 @@ classifiers = [
 ]
 keywords = ["networking", "ip", "subnet", "cli"]
 requires-python = ">=3.9"
-urls = { 
-    "Homepage" = "https://github.com/nicanorflavier/ipnet",
-    "Repository" = "https://github.com/nicanorflavier/ipnet",
-    "Issues" = "https://github.com/nicanorflavier/ipnet/issues",
-    "GitHub Statistics" = "https://github.com/nicanorflavier/ipnet/pulse",
-    "GitHub Profile" = "https://github.com/nicanorflavier",
-    "Twitter" = "https://twitter.com/your_twitter_handle",
-    "Mastodon" = "https://mastodon.social/@your_mastodon_handle"
-}
+
+[project.urls]
+Homepage = "https://github.com/nicanorflavier/ipnet"
+Repository = "https://github.com/nicanorflavier/ipnet"
+Issues = "https://github.com/nicanorflavier/ipnet/issues"
+Changelog = "https://github.com/nicanorflavier/ipnet/blob/master/CHANGELOG.md"
+GitHub_Statistics = "https://github.com/nicanorflavier/ipnet/pulse"
+GitHub_Profile = "https://github.com/nicanorflavier"
+X = "https://x.com/nicanorflavier"
+Mastodon = "https://mastodon.social/@nicanorflavier"
+
 
 [project.scripts]
 ipnet = "main"
