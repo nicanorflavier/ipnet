@@ -25,7 +25,6 @@ jobs:
       run: |
         echo "VERSION=$(python -c "import toml; print(toml.load('pyproject.toml')['project']['version'])")" > version.txt
         echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
-  
     - name: Save version as artifact
       uses: actions/upload-artifact@v4
       with:
@@ -131,10 +130,10 @@ jobs:
     - name: Upload binary
       uses: actions/upload-artifact@v4
       with:
-        name: ipnet-${{ env.VERSION }}-${{ runner.os }}-python-${{ matrix.python-version }}.zip
+        name: ipnet-${{ steps.get_version.outputs.version }}-${{ runner.os }}-python-${{ matrix.python-version }}.zip
         path: dist/ipnet*
     - name: Upload checksum
       uses: actions/upload-artifact@v4
       with:
-        name: checksum-${{ matrix.os }}-${{ matrix.python-version }}
+        name: checksum-${{ steps.get_version.outputs.version }}-${{ runner.os }}-python-${{ matrix.python-version }}
         path: checksum.txt
