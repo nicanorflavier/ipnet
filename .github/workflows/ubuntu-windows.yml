@@ -20,13 +20,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install build toml
         python -m build
+
     - name: Extract ipnet version
       id: get_version
       run: |
-        echo "VERSION=$(python -c "import toml; print(toml.load('pyproject.toml')['project']['version'])")" > version.txt
-        echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
+        echo "::set-output name=version::$(python -c "import toml; print(toml.load('pyproject.toml')['tool']['poetry']['version'])")"
+
     - name: Save version as artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v2
       with:
         name: version
         path: version.txt
