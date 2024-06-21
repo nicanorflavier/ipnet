@@ -20,6 +20,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install build
         python -m build
+    - name: Extract ipnet version
+      id: get_version
+      run: |
+        echo "::set-output name=version::$(python -c "import toml; print(toml.load('pyproject.toml')['tool']['poetry']['version'])")"
+
+    - name: Save version as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: version
+        path: version.txt
 
   check-formatting:
     needs: setup
@@ -80,6 +90,13 @@ jobs:
         architecture: [x64]
     steps:
     - uses: actions/checkout@v4
+    - name: Download version artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: version
+    - id: get_version
+      run: |
+        echo "::set-output name=version::$(cat version.txt)"
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
@@ -113,7 +130,7 @@ jobs:
     - name: Upload binary
       uses: actions/upload-artifact@v4
       with:
-        name: ipnet-${{ matrix.os }}-${{ matrix.python-version }}
+        name: ipnet-${{ steps.get_version.outputs.version }}-${{ runner.os }}-python-${{ matrix.python-version }}.zip
         path: dist/ipnet*
     - name: Upload checksum
       uses: actions/upload-artifact@v4

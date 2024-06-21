@@ -1,4 +1,4 @@
-# IPnet [![GitHub Release](https://img.shields.io/github/release/nicanorflavier/ipnet.svg)](https://github.com/nicanorflavier/ipnet/releases/latest) [![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg?style=flat-square)](https://python.org) [![License](https://img.shields.io/github/license/nicanorflavier/ipnet.svg?style=flat-square)](LICENSE.txt) [![Github All Releases](https://img.shields.io/github/downloads/nicanorflavier/ipnet/total.svg)](https://github.com/nicanorflavier/ipnet/releases)
+# IPnet [![GitHub Release](https://img.shields.io/github/release/nicanorflavier/ipnet.svg)](https://github.com/nicanorflavier/ipnet/releases/latest) [![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg?style=flat-square)](https://python.org) [![License](https://img.shields.io/github/license/nicanorflavier/ipnet.svg?style=flat-square)](LICENSE.txt) [![Github All Releases](https://img.shields.io/github/downloads/nicanorflavier/ipnet/total.svg)](https://github.com/nicanorflavier/ipnet/releases)
 
 ![MacOS](https://img.shields.io/badge/MacOS-compatible-green)
 ![Windows](https://img.shields.io/badge/Windows-compatible-green)
@@ -24,7 +24,7 @@ A CLI tool for IP subnet calculation and network information. It is minimal and 
 - Displays the following information, example below:
 - Available in Windows, Linux and MacOS binaries
 
-![Info Output](https://github.com/nicanorflavier/ipnet/blob/master/images/info-output.png)
+![Info Output](https://raw.githubusercontent.com/nicanorflavier/ipnet/master/images/info-output.png)
   
 ## Usage
 
@@ -41,10 +41,10 @@ ipnet 192.168.1.0 0.0.15.255
 
 ## Demo
 
-![Demo GIF](https://github.com/nicanorflavier/ipnet/blob/master/images/ipnet.gif)
+![Demo GIF](https://raw.githubusercontent.com/nicanorflavier/ipnet/master/images/ipnet.gif)
 
 ## Requirements
-* Python 3.7 or higher
+* Python 3.9 or higher
 
 ## Installation
 To install IPnet CLI tool from GitHub, follow these steps:
