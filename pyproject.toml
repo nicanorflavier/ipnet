@@ -1,6 +1,6 @@
 [project]
 name = "ipnet"
-version = "0.1.1.2"
+version = "0.1.1a0"
 description = "A CLI tool for IP subnet calculation and network information. It is minimal and compact, your network info Swiss Army knife. More info at https://github.com/nicanorflavier/ipnet"
 readme = "README.md"
 authors = [
@@ -25,9 +25,8 @@ GitHub_Profile = "https://github.com/nicanorflavier"
 X = "https://x.com/nicanorflavier"
 Mastodon = "https://mastodon.social/@nicanorflavier"
 
-
-[project.scripts]
-ipnet = "main"
+[project.entry-points."console_scripts"]
+ipnet = "ipnet.ipnet:main"
 
 [tool.poetry.dependencies]
 python = "^3.9"

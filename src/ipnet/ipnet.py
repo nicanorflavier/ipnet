@@ -62,9 +62,9 @@ class NetworkInfo:
         Print network information.
         """
         init()  # Initialize colorama
-        print(f"CIDR notation: {Fore.CYAN}{self.network}{Style.RESET_ALL}")
+        print(f"\nCIDR notation: {Fore.CYAN}{self.network}{Style.RESET_ALL}")
         print(
-            f"\nNetwork address: {Fore.CYAN}{self.network.network_address}{Style.RESET_ALL}"
+            f"Network address: {Fore.CYAN}{self.network.network_address}{Style.RESET_ALL}"
         )
         print(
             f"Broadcast address: {Fore.CYAN}{self.network.broadcast_address}{Style.RESET_ALL}"
@@ -84,10 +84,11 @@ class NetworkInfo:
         print(
             f"Total number of addresses: {Fore.GREEN}{self.network.num_addresses}{Style.RESET_ALL}"
         )
-        print(f"Network class: {Fore.MAGENTA}{self.network_class}{Style.RESET_ALL}")
         print(
             f'IP Type: {Fore.MAGENTA}{"Private" if self.network.is_private else "Public"}{Style.RESET_ALL}'
         )
+        print(f"Network class: {Fore.MAGENTA}{self.network_class}{Style.RESET_ALL}")
+        print()
 
 
 class NetworkValidator:
